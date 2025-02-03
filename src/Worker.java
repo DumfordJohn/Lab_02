@@ -4,7 +4,7 @@ public class Worker extends Person {
     private double hourlyPayRate;
 
     public Worker(String firstName, String lastName, String ID, String title, int YOB) {
-        super(firstName, lastName, ID, title, YOB);
+        super(ID, title, firstName, lastName, YOB);
     }
 
     public double getHourlyPayRate() {
@@ -61,7 +61,7 @@ public class Worker extends Person {
 
     @Override
     public String toXML() {
-        return super.toXML() + "<hourlyPayRate>" + hourlyPayRate + "</hourlyPayRate>";
+        return super.toXML() + " <hourlyPayRate>" + hourlyPayRate + "</hourlyPayRate>";
     }
 
     @Override

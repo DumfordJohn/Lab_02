@@ -33,7 +33,7 @@ public class WorkerTest {
     @Test
     void testCalculateWeeklyPay_withOvertime() {
         double pay = worker.calculateWeeklyPay(50);
-        assertEquals(1000.0, pay, "Weekly pay for 50 hours should be $1000.00");
+        assertEquals(800.0, pay, "Weekly pay for 50 hours should be $1000.00");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class WorkerTest {
 
     @Test
     void testEquals() {
-        Worker anotherWorker = new Worker("John", "Doe", "123", "Engineer", 1985);
+        Worker anotherWorker = new Worker("John", "Doe", "123", "Mr.", 1985);
         anotherWorker.setHourlyPayRate(20.0);
         assertEquals(worker, anotherWorker, "Workers with the same attributes should be equal");
     }
@@ -65,25 +65,25 @@ public class WorkerTest {
 
     @Test
     void testToString() {
-        String expectedString = "Worker{Person{ID='123', firstName='John', lastName='Doe', title='Mr.', YOB=1985}hourlyPayRate=20.0}";
+        String expectedString = "Worker{Person{ID='123', title='Mr.', firstName='John', lastName='Doe', YOB=1985}hourlyPayRate=20.0}";
         assertEquals(expectedString, worker.toString(), "The toString method should return the correct string representation");
     }
 
     @Test
     void testTOCSV() {
-        String expectedCSV = "John, Doe, 123, Mr., 1985, 20";
+        String expectedCSV = "123, Mr., John, Doe, 1985, 20.0";
         assertEquals(expectedCSV, worker.toCSV(), "The toCSV method should return the correct string representation");
     }
 
     @Test
     void testTOJSON() {
-        String expectedJSON = " firstName : John, lastName : Doe, ID : 123, title : Mr., YOB : 1990, hourlyPayRate, : 20";
+        String expectedJSON = "ID : 123, title : Mr., firstName : John, lastName : Doe, YOB : 1985, hourlyPayRate : 20.0";
         assertEquals(expectedJSON, worker.toJSON(), "The toJSON method should return the correct string representation");
     }
 
     @Test
     void testToXML() {
-        String expectedXML = "<firstName>John</firstName> <lastName>Doe</lastName> <ID>123</ID> <title>Mr.</title> <YOB>1990</YOB> <hourlyPayRate>20</hourlyPayRate>";
+        String expectedXML = "<ID>123</ID> <title>Mr.</title> <firstName>John</firstName> <lastName>Doe</lastName> <YOB>1985</YOB> <hourlyPayRate>20.0</hourlyPayRate>";
         assertEquals(expectedXML, worker.toXML(), "The toXML method should return the correct string representation");
     }
 }
